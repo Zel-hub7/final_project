@@ -20,8 +20,20 @@ class StudentsApplicationsController < ApplicationController
 
     def approve
         @application = StudentsApplication.find(params[:id])
-        @application.update(status: 'approved')
-        redirect_to school_dashboard_path, notice: 'Application approved successfully.'
+        if @application.update(status: 'approved')
+        @student = Student.create(
+            FirstName: @application.FirstName,
+            LastName: @application.LastName,
+            phone_number: @application.phone_number,
+            user_id: @application.user_id,
+            category: @application.category
+            # Add other attributes as needed
+        )
+        @application.destroy
+        redirect_to school_dashboard_path, notice: 'Application approved and student created successfully.'
+        else
+        redirect_to school_dashboard_path, alert: 'Failed to approve application.'
+        end
     end
     
     def reject

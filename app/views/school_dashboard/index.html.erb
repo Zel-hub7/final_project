@@ -7,19 +7,23 @@
     <tr>
       <th>Student</th>
       <th>Status</th>
-      <th>Actions</th> <!-- Adding Actions header -->
+      <th>Category</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @student_applications.each do |application| %>
-      <tr>
-        <td><%= "#{application.FirstName} #{application.LastName}" %></td>
-        <td><%= application.status %></td>
-        <td>
-          <%= button_to 'Approve', approve_students_application_path(application), method: :patch, class: 'btn btn-success' %>
-          <%= button_to 'Reject', reject_students_application_path(application), method: :patch, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+      <% if application.status != 'approved' %>
+        <tr>
+          <td><%= "#{application.FirstName} #{application.LastName}" %></td>
+          <td><%= application.status %></td>
+          <td><%= application.category %></td>
+          <td>
+            <%= button_to 'Approve', approve_students_application_path(application), method: :patch, class: 'btn btn-success' %>
+            <%= button_to 'Reject', reject_students_application_path(application), method: :patch, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
