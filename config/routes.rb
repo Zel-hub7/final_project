@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     patch 'approve', on: :member
     patch 'reject', on: :member
   end
+  resources :admin
 end
