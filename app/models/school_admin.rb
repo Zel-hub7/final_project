@@ -1,0 +1,7 @@
+# app/models/school_admin.rb
+
+class SchoolAdmin < ApplicationRecord
+    belongs_to :user
+    belongs_to :school
+end
+  

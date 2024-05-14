@@ -1,29 +1,3 @@
-<!-- app/views/school_dashboard/index.html.erb -->
-
+<!-- index.html.erb -->
+<h1>Welcome to <%= @school_name %></h1>
 <h1>School Dashboard</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Student</th>
-      <th>Status</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @student_applications.each do |application| %>
-      <% if application.status != 'approved' %>
-        <tr>
-          <td><%= "#{application.FirstName} #{application.LastName}" %></td>
-          <td><%= application.status %></td>
-          <td><%= application.category %></td>
-          <td>
-            <%= button_to 'Approve', approve_students_application_path(application), method: :patch, class: 'btn btn-success' %>
-            <%= button_to 'Reject', reject_students_application_path(application), method: :patch, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
