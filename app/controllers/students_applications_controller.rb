@@ -26,7 +26,8 @@ class StudentsApplicationsController < ApplicationController
             LastName: @application.LastName,
             phone_number: @application.phone_number,
             user_id: @application.user_id,
-            category: @application.category
+            category: @application.category,
+            school_id: @application.school_id
             # Add other attributes as needed
         )
         @application.destroy

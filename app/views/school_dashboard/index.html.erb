@@ -8,7 +8,8 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Category</th>
-      <!-- Add more headers for additional attributes -->
+      <th>Status</th>
+      <th>Actions</th> <!-- New column for buttons -->
     </tr>
   </thead>
   <tbody>
@@ -17,7 +18,18 @@
         <td><%= application.FirstName %></td>
         <td><%= application.LastName %></td>
         <td><%= application.category %></td>
-        <!-- Add more cells for additional attributes -->
+        <td><%= application.status %></td> <!-- Display the status -->
+        <td>
+          <% if application.status == "pending" %>
+          <%= button_to "Approve", approve_students_application_path(application), method: :patch, data: { confirm: "Are you sure you want to approve this application?" } %>
+          <%= button_to "Reject", reject_students_application_path(application), method: :patch, data: { confirm: "Are you sure you want to reject this application?" } %>
+
+          <% else %>
+            <!-- Display a disabled button if the status is not pending -->
+            <button class="btn btn-secondary" disabled>Approve</button>
+            <button class="btn btn-secondary" disabled>Reject</button>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
