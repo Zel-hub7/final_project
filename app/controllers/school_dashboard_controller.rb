@@ -2,11 +2,14 @@ class SchoolDashboardController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_school_dashboard
 
+
   def index
     @school_name = current_user.school_admins.first.school.name
-    
+    @student_applications = StudentsApplication.where(school_id: current_user.school_admins.first.school_id)
   end
-
+  
+    
+    
   private
 
   def authorize_school_dashboard
