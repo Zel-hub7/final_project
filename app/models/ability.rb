@@ -10,6 +10,7 @@ class Ability
       can :manage, :school_dashboard
     else
       can :read, :home
+      cannot :manage, :school_dashboard
     end
   end
 end
