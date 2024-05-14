@@ -35,5 +35,10 @@
     <%= form.select :category, ['Motor', 'Truck', 'Automobile'] %>
   </div>
 
+  <div class="field">
+    <%= form.label :school_id, "Choose School" %>
+    <%= form.collection_select :school_id, School.all, :id, :name, prompt: "Select School" %>
+  </div>
+
   <%= form.submit "Submit" %>
 <% end %>
