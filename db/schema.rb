@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_14_083748) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_14_110446) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_083748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.bigint "school_id", null: false
+    t.index ["school_id"], name: "index_students_on_school_id"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
@@ -60,6 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_083748) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "students", "schools"
   add_foreign_key "students", "users"
   add_foreign_key "students_applications", "schools"
   add_foreign_key "students_applications", "users"
