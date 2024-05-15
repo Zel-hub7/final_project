@@ -59,12 +59,39 @@
 .main-section {
     /* Set the background image */
     background-image: url('/assets/bg.jpg'); /* Adjust the path and filename as needed */
-  
+    
     /* Set background properties */
     background-size: cover; /* Cover the entire section */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the background image */
+    height: 60vh;
     /* Optionally, you can add other background properties like background-color */
-  }
+}
+.Sub-Section {
+    display: flex;    
+    align-items: center;
+    flex-direction: column;
+    padding: 4%;
+
+}
+.tag {
+    color: white;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700px;
+    margin-bottom: 2%;
+}
+.enroll {
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+}
+
+.enroll:hover {
+    background-color: #f0f0f0;
+}
   
   
