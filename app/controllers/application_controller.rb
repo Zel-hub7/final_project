@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
     when 'school'
       school_dashboard_index_path
     when 'admin'
-      admin_path
+      admin_index_path
     else
-      root_path
+      home_students_path
     end
   end
 

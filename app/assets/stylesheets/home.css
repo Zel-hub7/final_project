@@ -67,7 +67,7 @@
     background-size: cover; /* Cover the entire section */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the background image */
-    height: 60vh;
+    height: 70vh;
     /* Optionally, you can add other background properties like background-color */
     /* Apply overlay effect */
     background-blend-mode: overlay;
@@ -113,5 +113,15 @@
 .enroll:hover {
     background-color: #f0f0f0;
 }
-  
-  
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.footer p {
+    margin: 1%
+}

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  authenticated :user do
+    root to: "home#students", as: :authenticated_root
+  end
+
   root to: "home#index"
   
   resources :school_dashboard
@@ -8,5 +13,6 @@ Rails.application.routes.draw do
     patch 'approve', on: :member
     patch 'reject', on: :member
   end
+  
   resources :admin
 end
