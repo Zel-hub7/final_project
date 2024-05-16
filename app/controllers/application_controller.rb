@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     when 'admin'
       admin_index_path
     else
-      home_students_path
+      root_path
     end
   end
 

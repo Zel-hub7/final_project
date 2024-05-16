@@ -1,44 +1,102 @@
-<!-- app/views/students_applications/new.html.erb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment Form</title>
 
-<h1>New Student Application</h1>
+</head>
+<body class="form-body">
 
-<%= form_with(model: @application, url: students_applications_path, local: true) do |form| %>
-  <% if @application.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+<section class="my-container">
+  
 
-      <ul>
-        <% @application.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: @application, url: students_applications_path, local: true, html: { class: 'studentsForm' }) do |form| %>
+   <h1>Enrollment Form</h1>
+    <% if @application.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+        <ul>
+          <% @application.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= form.label :FirstName %>
+            <%= form.text_field :FirstName, class: 'form-control', autofocus: true %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= form.label :LastName %>
+            <%= form.text_field :LastName, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= form.label :middle_name %>
+            <%= form.text_field :middle_name, class: 'form-control' %>
+          </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= form.label :phone_number %>
+            <%= form.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= form.label :address %>
+            <%= form.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= form.label :city %>
+            <%= form.text_field :city, class: 'form-control' %>
+          </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :gender %>
+        <%= form.select :gender, ['Male', 'Female', 'Other'], {prompt: "Select Gender"}, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :birthday %>
+        <%= form.date_field :birthday, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :category %>
+      <%= form.select :category, ['Motor', 'Truck', 'Automobile'], {prompt: "Select Category"}, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :school_id, "Choose School" %>
+      <%= form.collection_select :school_id, School.all, :id, :name, {prompt: "Select School"}, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= form.submit "Submit Enrollment", class: 'btn btn-primary' %>
+    </div>
+
+    
   <% end %>
 
-  <div class="field">
-    <%= form.label :FirstName %>
-    <%= form.text_field :FirstName, autofocus: true %>
-  </div>
+</section>
 
-  <div class="field">
-    <%= form.label :LastName %>
-    <%= form.text_field :LastName %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.select :category, ['Motor', 'Truck', 'Automobile'] %>
-  </div>
-
-  <div class="field">
-    <%= form.label :school_id, "Choose School" %>
-    <%= form.collection_select :school_id, School.all, :id, :name, prompt: "Select School" %>
-  </div>
-
-  <%= form.submit "Submit" %>
-<% end %>
+</body>
+</html>

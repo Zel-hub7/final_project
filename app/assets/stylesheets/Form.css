@@ -1,0 +1,53 @@
+
+
+.form-body {
+    background-color: silver;
+
+}
+.my-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+
+}
+.studentsForm {
+    background-color: white;
+    padding: 3%;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+
+}
+.names-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.fieldNew {
+    display: flex;
+    flex-direction: column;
+}
+.genderAndPhone {
+    display: flex;
+    justify-content: space-between;
+
+}
+.submit-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-buttons {
+    border: blue;
+    background-color: red;
+    display: none;
+}
+.formses {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.formses:focus {
+    outline: none; /* Remove the default focus outline */
+    border-color: transparent;
+}
