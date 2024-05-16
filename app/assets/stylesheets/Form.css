@@ -51,3 +51,18 @@
     outline: none; /* Remove the default focus outline */
     border-color: transparent;
 }
+.signupforms {
+    width: 70%;
+    background-color: white;
+    padding: 3%;
+    
+}
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+  
+
+}
