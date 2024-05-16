@@ -1,1 +1,54 @@
-<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger", form_class: "d-inline" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Sidebar Example</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body class = "dashboards">
+
+<!-- Sidebar -->
+<div class="zola-sidebar">
+  <a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+    </svg> Apply For Enrollment
+  </a>
+  <a href="#">
+    <i class="bi bi-check-circle"></i> Status
+  </a>
+  <a href="#">
+    <i class="bi bi-arrow-repeat"></i> Apply For Renewal
+  </a>
+  
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger", form_class: "d-inline" %>
+</div>
+
+
+<!-- Page content -->
+<div class="zola-content">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button type="button" id="sidebarCollapse" class="btn btn-info">
+        <i class="fas fa-align-left"></i>
+        <span>Toggle Sidebar</span>
+      </button>
+    </div>
+  </nav>
+  <h2>Main Content Area</h2>
+  <p>This is the main content area. It will adjust based on the sidebar width.</p>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
