@@ -54,15 +54,23 @@
 .signupforms {
     width: 70%;
     background-color: white;
-    padding: 3%;
-    
+    padding: 1.5%;
+    border: 2px solid #ccc; /* Add a subtle border */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border-radius: 10px; /* Smooth transition for transform and border-color */
 }
+
+.signupforms:hover {
+    transform: scale(1.02); /* Slightly enlarge the form on hover */
+    border-color: #007bff; /* Change border color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow on hover */
+}
+
 .sign-up-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-  
+    margin-top: 2%;
 
 }

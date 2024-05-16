@@ -7,10 +7,11 @@
 
 </head>
 <body class = "form-body">
-  <h2 class="text-center mb-4">Sign up</h2>
+
 
   <section class="sign-up-container">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'needs-validation signupforms' }) do |f| %>
+      <h2 class="text-center mb-4">Sign up</h2>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-group">
@@ -34,12 +35,14 @@
       <div class="form-group text-center">
         <%= f.submit "Sign up", class: 'btn btn-primary btn-lg btn-block' %>
       </div>
+      <div class="text-center mt-3">
+        <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
+      </div>
     <% end %>
+
   </section>
   
-  <div class="text-center mt-3">
-    <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
-  </div>
+
 
   <!-- You can include your JavaScript here -->
   <script src="path/to/your/scripts.js"></script>
