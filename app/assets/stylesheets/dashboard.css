@@ -42,3 +42,11 @@
     margin-right: 37px;
     display: none;
 }
+.dashboard-content {
+
+}
+
+.zola-box {
+    display: flex;
+    justify-content: space-between;
+}
