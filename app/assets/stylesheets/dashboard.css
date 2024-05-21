@@ -14,7 +14,7 @@
   
 }
 .zola-content {
-   
+    background-color: silver;
     width: 80%;
 }
 .zola-main-content {
@@ -48,5 +48,15 @@
 
 .zola-box {
     display: flex;
-    justify-content: space-between;
+    gap: 5px;
+    border-radius: 8px;
+}
+
+.nav-3 {
+    background-color: #e9ecef;
+}
+.icon-cont {
+    background-color: rgb(53, 53, 53);
+    padding: 15px;
+    border-radius: 8px;
 }
