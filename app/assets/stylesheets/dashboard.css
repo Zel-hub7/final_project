@@ -14,8 +14,11 @@
   
 }
 .zola-content {
-    
+   
     width: 80%;
+}
+.zola-main-content {
+    padding: 2%;
 }
   /* Style for the sidebar links */
 .zola-sidebar a {

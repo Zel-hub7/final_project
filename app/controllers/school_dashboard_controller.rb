@@ -7,6 +7,11 @@ class SchoolDashboardController < ApplicationController
     @school_name = current_user.school_admins.first.school.name
     @student_applications = StudentsApplication.where(school_id: current_user.school_admins.first.school_id)
   end
+
+  def show
+    @school_name = current_user.school_admins.first.school.name
+    @student_applications = StudentsApplication.where(school_id: current_user.school_admins.first.school_id)
+  end
   
     
     
