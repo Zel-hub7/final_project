@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
-  
+
+
+  get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
+
   resources :school_dashboard
   
   resources :students_applications, only: [:new, :create] do
