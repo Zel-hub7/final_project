@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'application_status', to: 'home#application_status'
 
-
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
 
   resources :school_dashboard do
@@ -22,6 +21,10 @@ Rails.application.routes.draw do
     patch 'approve', on: :member
     patch 'reject', on: :member
   end
+
+  namespace :admin do
+    resources :schools, only: [:new, :create, :index]
+  end
   
-  resources :admin
+  resources :admin, only: [:index] # Assuming AdminController has an index action
 end
