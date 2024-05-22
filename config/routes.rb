@@ -7,10 +7,13 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
 
-  resources :school_dashboard
+  resources :school_dashboard do
+    collection do
+      get 'all_enrollees', to: 'school_dashboard#all_enrollees'
+    end
+  end
   
   resources :students_applications, only: [:new, :create] do
     patch 'approve', on: :member
