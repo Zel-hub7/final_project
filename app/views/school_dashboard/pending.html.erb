@@ -1,17 +1,75 @@
-<h1>School Dashboard</h1>
-<h1>Welcome To <%= @school_name %></h1>
-<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger", form_class: "d-inline" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Sidebar Example</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .dropdown-custom {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a, .dropdown-content form {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover, .dropdown-content form:hover {
+      background-color: #f1f1f1;
+    }
+    .show {
+      display: block;
+    }
+  .small-arrow {
+    font-size: 0.8em;
+    display: none; /* Adjust the size as needed */
+  }
+  </style>
+</head>
+<body class="dashboards">
 
-
-<h2>Student Applications</h2>
-<table>
-  <thead>
+<div class="zola-sidebar">
+  <a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/>
+      <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/>
+    </svg> Dashboard
+  </a>
+  <a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="white" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+      <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+    </svg> Enrollees List
+  </a>
+  <a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="green" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+    </svg> Apply For Renewal
+  </a>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger logouts", form_class: "d-inline" %>
+ 
+</div>
+<div class = "zola-table-container">
+<h4>Student Applications</h4>
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Category</th>
       <th>Status</th>
-      <th>Actions</th> <!-- New column for buttons -->
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,19 +78,57 @@
         <td><%= application.FirstName %></td>
         <td><%= application.LastName %></td>
         <td><%= application.category %></td>
-        <td><%= application.status %></td> <!-- Display the status -->
+        <td>
+          <span class="badge <%= application.status == 'pending' ? 'badge-warning' : (application.status == 'approved' ? 'badge-success' : 'badge-danger') %>">
+            <%= application.status.capitalize %>
+          </span>
+        </td>
         <td>
           <% if application.status == "pending" %>
-          <%= button_to "Approve", approve_students_application_path(application), method: :patch, data: { confirm: "Are you sure you want to approve this application?" } %>
-          <%= button_to "Reject", reject_students_application_path(application), method: :patch, data: { confirm: "Are you sure you want to reject this application?" } %>
-
+            <div class="dropdown-custom">
+              <button class="btn btn-primary btn-sm" onclick="toggleDropdown('dropdownMenu<%= application.id %>')">
+                Actions <span>&#x25BC;</span> <!-- Down arrow -->
+              </button>
+              <div id="dropdownMenu<%= application.id %>" class="dropdown-content">
+                <%= button_to "Approve", approve_students_application_path(application), method: :patch, class: "dropdown-item", data: { confirm: "Are you sure you want to approve this application?" } %>
+                <%= button_to "Reject", reject_students_application_path(application), method: :patch, class: "dropdown-item", data: { confirm: "Are you sure you want to reject this application?" } %>
+              </div>
+            </div>
           <% else %>
-            <!-- Display a disabled button if the status is not pending -->
-            <button class="btn btn-secondary" disabled>Approve</button>
-            <button class="btn btn-secondary" disabled>Reject</button>
+            <div class="dropdown-custom">
+              <button class="btn btn-secondary btn-sm" disabled>
+                Actions <span class = "small-arrow">&#x25BC;</span> <!-- Down arrow -->
+              </button>
+              <div id="dropdownMenu<%= application.id %>" class="dropdown-content">
+                <button class="dropdown-item" disabled>Approve</button>
+                <button class="dropdown-item" disabled>Reject</button>
+              </div>
+            </div>
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+</div>
+<script>
+  function toggleDropdown(id) {
+    document.getElementById(id).classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.btn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>

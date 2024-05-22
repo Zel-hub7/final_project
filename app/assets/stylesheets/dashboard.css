@@ -61,3 +61,8 @@
     border-radius: 8px;
     
 }
+
+.zola-table-container {
+    width: 100%;
+    margin: 2%;
+}
