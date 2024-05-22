@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
+  get 'application_status', to: 'home#application_status'
+
 
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
 
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :students_applications, only: [:new, :create] do
+  resources :students_applications, only: [:new, :create, :edit, :update] do
     get 'show', on: :member
     patch 'approve', on: :member
     patch 'reject', on: :member

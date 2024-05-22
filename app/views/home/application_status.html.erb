@@ -1,0 +1,9 @@
+<h1>Application Status</h1>
+<% if @application_status.present? %>
+  <p>Your application status: <%= @application_status %></p>
+  <% if @application_status == 'rejected' %>
+    <%= link_to 'Reapply', edit_students_application_path(current_user.students_application), class: "btn btn-warning" %>
+  <% end %>
+<% else %>
+  <p>No application submitted yet.</p>
+<% end %>

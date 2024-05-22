@@ -5,4 +5,8 @@ class HomeController < ApplicationController
 
     def students 
     end
+
+    def application_status
+        @application_status = current_user.students_application&.status
+    end
 end

@@ -1,0 +1,15 @@
+<%= form_for @application, url: { action: "update" }, method: :patch do |f| %>
+  <%# Your form fields go here, for example: %>
+  <%= f.label :FirstName %>
+  <%= f.text_field :FirstName %>
+
+  <%= f.label :LastName %>
+  <%= f.text_field :LastName %>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+
+  <%# Add other fields as needed %>
+
+  <%= f.submit "Update Application" %>
+<% end %>

@@ -1,4 +1,6 @@
 class StudentsApplicationsController < ApplicationController
+  before_action :set_application, only: [:edit, :update, :approve, :reject]
+
   def new
     if current_user.students_application
       redirect_to root_path, notice: 'You have already submitted an application.'
@@ -16,8 +18,22 @@ class StudentsApplicationsController < ApplicationController
     end
   end
 
+  def edit
+    # This action will render the edit form for an existing application
+  end
+
+  def update
+    if @application.update(application_params.merge(status: 'pending'))
+      redirect_to root_path, notice: 'Application updated successfully.'
+    else
+      render :edit
+    end
+  end
+  
+
+
+
   def approve
-    @application = StudentsApplication.find(params[:id])
     if @application.update(status: 'approved')
       @student = Student.create(
         FirstName: @application.FirstName,
@@ -35,7 +51,6 @@ class StudentsApplicationsController < ApplicationController
   end
   
   def reject
-    @application = StudentsApplication.find(params[:id])
     if @application.update(status: 'rejected')
       redirect_to school_dashboard_path, notice: 'Application rejected successfully.'
     else
@@ -44,6 +59,10 @@ class StudentsApplicationsController < ApplicationController
   end
 
   private
+
+  def set_application
+    @application = StudentsApplication.find(params[:id])
+  end
 
   def application_params
     params.require(:students_application).permit(:FirstName, :LastName, :phone_number, :category, :school_id, :middle_name, :gender, :birthday, :address, :city)
