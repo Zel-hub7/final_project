@@ -13,6 +13,10 @@ class SchoolDashboardController < ApplicationController
     @student_applications = StudentsApplication.where(school_id: current_user.school_admins.first.school_id)
   end
 
+  def show
+    @application = StudentsApplication.find(params[:id])
+  end
+
   def all_enrollees
     @school_name = current_user.school_admins.first.school.name
     @all_enrollees = StudentsApplication.where(school_id: current_user.school_admins.first.school_id)

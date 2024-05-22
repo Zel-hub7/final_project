@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   
   resources :students_applications, only: [:new, :create] do
+    get 'show', on: :member
     patch 'approve', on: :member
     patch 'reject', on: :member
   end

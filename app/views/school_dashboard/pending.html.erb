@@ -73,42 +73,52 @@
     </tr>
   </thead>
   <tbody>
-    <% @student_applications.where(status: 'pending').each do |application| %>
-      <tr>
-        <td><%= application.FirstName %></td>
-        <td><%= application.LastName %></td>
-        <td><%= application.category %></td>
-        <td>
-          <span class="badge <%= application.status == 'pending' ? 'badge-warning' : (application.status == 'approved' ? 'badge-success' : 'badge-danger') %>">
-            <%= application.status.capitalize %>
-          </span>
-        </td>
-        <td>
-          <% if application.status == "pending" %>
-            <div class="dropdown-custom">
-              <button class="btn btn-primary btn-sm" onclick="toggleDropdown('dropdownMenu<%= application.id %>')">
-                Actions <span>&#x25BC;</span> <!-- Down arrow -->
-              </button>
-              <div id="dropdownMenu<%= application.id %>" class="dropdown-content">
-                <%= button_to "Approve", approve_students_application_path(application), method: :patch, class: "dropdown-item", data: { confirm: "Are you sure you want to approve this application?" } %>
-                <%= button_to "Reject", reject_students_application_path(application), method: :patch, class: "dropdown-item", data: { confirm: "Are you sure you want to reject this application?" } %>
-              </div>
+  <% @student_applications.where(status: 'pending').each do |application| %>
+    <tr id="application_<%= application.id %>" style="cursor: pointer;">
+      <td><%= application.FirstName %></td>
+      <td><%= application.LastName %></td>
+      <td><%= application.category %></td>
+      <td>
+        <span class="badge <%= application.status == 'pending' ? 'badge-warning' : (application.status == 'approved' ? 'badge-success' : 'badge-danger') %>">
+          <%= application.status.capitalize %>
+        </span>
+      </td>
+      <td>
+        <% if application.status == "pending" %>
+          <div class="dropdown-custom">
+            <button class="btn btn-primary btn-sm" onclick="toggleDropdown('dropdownMenu<%= application.id %>')">
+              Actions <span>&#x25BC;</span> <!-- Down arrow -->
+            </button>
+            <div id="dropdownMenu<%= application.id %>" class="dropdown-content">
+              <%= button_to "Approve", approve_students_application_path(application), method: :patch, class: "dropdown-item", data: { confirm: "Are you sure you want to approve this application?" } %>
+              <%= button_to "Reject", reject_students_application_path(application), method: :patch, class: "dropdown-item", data: { confirm: "Are you sure you want to reject this application?" } %>
             </div>
-          <% else %>
-            <div class="dropdown-custom">
-              <button class="btn btn-secondary btn-sm" disabled>
-                Actions <span class = "small-arrow">&#x25BC;</span> <!-- Down arrow -->
-              </button>
-              <div id="dropdownMenu<%= application.id %>" class="dropdown-content">
-                <button class="dropdown-item" disabled>Approve</button>
-                <button class="dropdown-item" disabled>Reject</button>
-              </div>
+          </div>
+        <% else %>
+          <div class="dropdown-custom">
+            <button class="btn btn-secondary btn-sm" disabled>
+              Actions <span class = "small-arrow">&#x25BC;</span> <!-- Down arrow -->
+            </button>
+            <div id="dropdownMenu<%= application.id %>" class="dropdown-content">
+              <button class="dropdown-item" disabled>Approve</button>
+              <button class="dropdown-item" disabled>Reject</button>
             </div>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <% # Generate URL based on application ID and link to it %>
+    <% application_url = school_dashboard_path(application.id) %>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('application_<%= application.id %>').addEventListener('click', function () {
+          window.location.href = '<%= application_url %>';
+        });
+      });
+    </script>
+  <% end %>
+</tbody>
+
 </table>
 
 </div>
