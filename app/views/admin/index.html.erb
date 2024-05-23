@@ -12,13 +12,13 @@
 
 <!-- Sidebar -->
 <div class="zola-sidebar">
-  <a href="#">
+  <a href="http://127.0.0.1:3000/admin">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
       <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/>
       <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/>
     </svg> Dashboard
   </a>
-  <a href="#">
+  <a href="http://127.0.0.1:3000/admin/schools/new">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="green" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
         </svg> Register New School
@@ -55,19 +55,20 @@
       <h1>Welcome To Admin Page</h1>
       <div class = "dashboard-content">
           <div class="row">
-  <div class="col-md-3">
-    <div class = "box zola-box p-2 mb-2 bg-light" style = "text-decoration: none; color: black">
-
-      <div class="icon-cont">
-        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" color="white"  fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-        </svg>
-      </div>
-      Pending
-
-    </div>
-  </div>
-
+           
+                <div class="col-md-3">
+                   <a href = "http://127.0.0.1:3000/admin/schools">
+                  <div class = "box zola-box p-2 mb-2 bg-light" style = "text-decoration: none; color: black">
+                   <div class="icon-cont">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" color="white" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16">
+                        <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/>
+                      </svg>
+                    </div>
+                    Registered Schools
+                  </div>
+                    </a>
+                </div>
+        
     <div class="col-md-3">
       <div class="box zola-box p-2 mb-2 bg-light">
         <div class = "icon-cont" style ="background-color: rgb(51, 51, 255);">
