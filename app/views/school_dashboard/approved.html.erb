@@ -13,13 +13,15 @@
     </thead>
     <tbody>
       <% @approved_students.each do |student| %>
-        <tr>
-          <td><%= check_box_tag "student_ids[]", student.id %></td>
-          <td><%= student.FirstName %></td>
-          <td><%= student.LastName %></td>
-          <td><%= student.phone_number %></td>
-          <td><%= student.category %></td>
-        </tr>
+        <% unless student.session == 'started' %>
+          <tr>
+            <td><%= check_box_tag "student_ids[]", student.id %></td>
+            <td><%= student.FirstName %></td>
+            <td><%= student.LastName %></td>
+            <td><%= student.phone_number %></td>
+            <td><%= student.category %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
