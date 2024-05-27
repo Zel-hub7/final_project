@@ -26,6 +26,12 @@ class SchoolDashboardController < ApplicationController
     @school_name = current_user.school_admins.first.school.name
     @approved_students = Student.where(school_id: current_user.school_admins.first.school_id)
   end
+
+  def in_session
+    @school_name = current_user.school_admins.first.school.name
+    @students = Student.where(school_id: current_user.school_admins.first.school_id)
+
+  end
   
   
 

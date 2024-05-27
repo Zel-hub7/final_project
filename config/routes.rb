@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :school_dashboard do
     collection do
       get 'all_enrollees', to: 'school_dashboard#all_enrollees'
+      get 'in_session', to: 'school_dashboard#in_session', as: 'in_session'
     end
   end
   
