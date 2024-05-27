@@ -32,6 +32,12 @@ class SchoolDashboardController < ApplicationController
     @students = Student.where(school_id: current_user.school_admins.first.school_id)
 
   end
+
+  def mark_exam_ready
+    @students = Student.where(id: params[:student_ids])
+    @students.update_all(session: 'exam_ready')
+    redirect_to in_session_school_dashboard_index_path, notice: "Selected students have been marked as exam ready."
+  end
   
   
 

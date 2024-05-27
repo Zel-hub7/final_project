@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     collection do
       get 'all_enrollees', to: 'school_dashboard#all_enrollees'
       get 'in_session', to: 'school_dashboard#in_session', as: 'in_session'
+      post 'mark_exam_ready', to: 'school_dashboard#mark_exam_ready', as: 'mark_exam_ready'
     end
   end
   
