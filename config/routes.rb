@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'application_status', to: 'home#application_status'
 
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
-
+  
+  get 'school_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_students'
+  post 'school_dashboard/mark', to: 'school_dashboard#mark', as: 'mark_students'
   resources :school_dashboard do
     collection do
       get 'all_enrollees', to: 'school_dashboard#all_enrollees'
