@@ -1,0 +1,24 @@
+<!-- admin/schools/list_students_with_session_started.html.erb -->
+
+<h1>List of Students with Session Started</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students_with_session_started.each do |student| %>
+      <tr>
+        <td><%= student.FirstName %></td>
+        <td><%= student.LastName %></td>
+     
+        <td><%= student.school.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

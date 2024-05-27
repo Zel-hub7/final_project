@@ -10,6 +10,11 @@ class Admin::SchoolsController < ApplicationController
     @school = School.new
   end
 
+  def show
+    @school = School.find(params[:id])
+    @students = @school.students
+  end
+
   def create
     @school = School.new(school_params)
     
@@ -30,6 +35,10 @@ class Admin::SchoolsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     flash.now[:alert] = "Failed to create school and school admin: #{e.message}"
     render :new
+  end
+
+  def list_students_with_session_started
+    @students_with_session_started = Student.where(session: 'started')
   end
   
   

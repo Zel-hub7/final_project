@@ -24,8 +24,13 @@ Rails.application.routes.draw do
     patch 'reject', on: :member
   end
 
+
   namespace :admin do
-    resources :schools, only: [:new, :create, :index]
+    resources :schools, only: [:new, :create, :index, :show] do
+      collection do
+        get 'list_students_with_session_started'
+      end
+    end
   end
   
   resources :admin, only: [:index] # Assuming AdminController has an index action
