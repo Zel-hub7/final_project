@@ -14,36 +14,37 @@ class Admin::SchoolsController < ApplicationController
     @school = School.find(params[:id])
     @students = @school.students
     @students_with_reexams = @school.students.joins(:reexams).distinct
-    
   end
 
   def approve_reexam
     @reexam = Reexam.find(params[:id])
-    @reexam.update(status: 'approved')
-    redirect_back fallback_location: root_path, notice: 'Reexam approved successfully.'
+    ActiveRecord::Base.transaction do
+      @reexam.update!(status: 'approved')
+      @reexam.student.update!(session: 'exam_ready')
+    end
+    redirect_back fallback_location: admin_school_path(@reexam.student.school), notice: 'Reexam approved successfully.'
+  rescue ActiveRecord::RecordInvalid => e
+    redirect_back fallback_location: admin_school_path(@reexam.student.school), alert: "Failed to approve reexam: #{e.message}"
   end
-  
-  
-  
 
   def reject_reexam
     @reexam = Reexam.find(params[:id])
     @reexam.update(status: 'rejected')
-    redirect_back fallback_location: root_path, notice: 'Reexam rejected successfully.'
+    redirect_back fallback_location: admin_school_path(@reexam.student.school), notice: 'Reexam rejected successfully.'
   end
 
   def create
     @school = School.new(school_params)
-    
+
     # Create a transaction to ensure atomicity
     ActiveRecord::Base.transaction do
       if @school.save
         # Create a new user with the role of "school admin"
         @admin_user = User.create!(email: params[:school][:admin_email], password: params[:school][:admin_password], role: 'school')
-    
+
         # Associate the new user with the created school as an admin
         @school_admin = @school.school_admins.create!(user: @admin_user)
-    
+
         redirect_to admin_schools_path, notice: 'School and school admin were successfully created.'
       else
         render :new
@@ -58,23 +59,6 @@ class Admin::SchoolsController < ApplicationController
     @students_with_session_started = Student.where(session: 'started')
   end
 
-  
-  private
-  
-  def generate_email
-    # Generate a random email address for the new user
-    SecureRandom.hex(4) + '@example.com'
-  end
-  
-  def generate_password
-    # Generate a random password for the new user
-    SecureRandom.hex(8)
-  end
-  
-  
-  
-  
-
   private
 
   def authorize_admin
@@ -85,9 +69,8 @@ class Admin::SchoolsController < ApplicationController
     params.require(:school).permit(:name, :address)
   end
 
-  def generate_password
-    # Generate a random password for the new admin user
-    SecureRandom.hex(8)
+  def generate_email
+    # Generate a random email address for the new user
+    SecureRandom.hex(4) + '@example.com'
   end
-
 end
