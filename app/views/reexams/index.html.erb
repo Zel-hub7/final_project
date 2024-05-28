@@ -1,0 +1,18 @@
+<h1>Your Re-exam Applications</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Application Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reexams.each do |reexam| %>
+      <tr>
+        <td><%= reexam.created_at.strftime('%B %d, %Y') %></td>
+        <td><%= reexam.status.capitalize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

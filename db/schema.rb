@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_28_083100) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_135322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reexams", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_reexams_on_student_id"
+  end
 
   create_table "school_admins", force: :cascade do |t|
     t.bigint "school_id", null: false
@@ -88,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_083100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reexams", "students"
   add_foreign_key "school_admins", "schools"
   add_foreign_key "school_admins", "users"
   add_foreign_key "students", "schools"

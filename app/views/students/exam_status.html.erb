@@ -1,0 +1,19 @@
+<!-- app/views/students/exam_status.html.erb -->
+<h1>Exam Status</h1>
+
+<% if @test.nil? %>
+  <p>You are not yet able to take your exam or you are not exam ready.</p>
+<% else %>
+  <% if @test.status == 'passed' %>
+    <p>Congratulations! You have passed the exam.</p>
+  <% elsif @test.status == 'failed' %>
+    <p>Unfortunately, you have failed the exam. Please try again.</p>
+  <div class="alert alert-danger" role="alert">
+    You have failed your exam
+  </div>
+  <% else %>
+    <p>Your exam status is: <%= @test.status %></p>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back to Dashboard', root_path, class: 'btn btn-primary' %>

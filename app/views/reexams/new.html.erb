@@ -1,0 +1,10 @@
+<h1>Apply for Re-exam</h1>
+
+<%= form_with model: [current_user.student, @reexam], local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select([['Pending', 'pending'], ['Approved', 'approved'], ['Rejected', 'rejected']], 'pending'), {}, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Submit Application', class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,10 @@
+<!-- app/views/students/session_status.html.erb -->
+<h1>Session Status</h1>
+
+<% if @session %>
+  <p>Your current session status is: <%= @session %></p>
+<% else %>
+  <p>Session status not available.</p>
+<% end %>
+
+<%= link_to 'Back to Dashboard', root_path, class: 'btn btn-primary' %>

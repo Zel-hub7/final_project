@@ -42,7 +42,7 @@ class StudentsApplicationsController < ApplicationController
         user_id: @application.user_id,
         category: @application.category,
         school_id: @application.school_id
-        # Add other attributes as needed
+     
       )
       redirect_to school_dashboard_path, notice: 'Application approved and student created successfully.'
     else
