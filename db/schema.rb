@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_28_135322) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_155040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "reexams", force: :cascade do |t|
     t.bigint "student_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
     t.index ["student_id"], name: "index_reexams_on_student_id"
   end
 

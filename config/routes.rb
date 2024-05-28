@@ -1,6 +1,5 @@
-Rails.application.routes.draw do  get 'reexams/new'
-  get 'reexams/create'
-  get 'reexams/index'
+Rails.application.routes.draw do
+  get 'reexams/new'
 
   devise_for :users
 
@@ -16,6 +15,7 @@ Rails.application.routes.draw do  get 'reexams/new'
   get 'students/exam_status', to: 'students#exam_status', as: 'student_exam_status'
   get 'school_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_students'
   post 'school_dashboard/mark', to: 'school_dashboard#mark', as: 'mark_students'
+
   resources :school_dashboard do
     collection do
       get 'all_enrollees', to: 'school_dashboard#all_enrollees'
@@ -30,22 +30,26 @@ Rails.application.routes.draw do  get 'reexams/new'
     patch 'reject', on: :member
   end
 
+  namespace :admin do
+    resources :schools, only: [:new, :create, :index, :show] do
+      member do
+        patch 'approve_reexam'
+        patch 'reject_reexam'
+      end
+      collection do
+        get 'list_students_with_session_started'
+      end
+    end
 
-# config/routes.rb
-# config/routes.rb
-namespace :admin do
-  resources :schools, only: [:new, :create, :index, :show] do
-    collection do
-      get 'list_students_with_session_started'
+    resources :students, only: [] do
+      resources :tests, only: [:create]
     end
   end
 
-  resources :students, only: [] do
-    resources :tests, only: [:create]
-  end
-end
+  get 'students/reexam', to: 'students#reexam_form', as: 'reexam_form'
+  post 'students/submit_reexam', to: 'students#submit_reexam', as: 'submit_reexam'
 
-
+  resources :students, only: [:show]
   
   resources :admin, only: [:index] # Assuming AdminController has an index action
 end

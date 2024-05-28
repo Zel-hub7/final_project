@@ -13,6 +13,23 @@ class Admin::SchoolsController < ApplicationController
   def show
     @school = School.find(params[:id])
     @students = @school.students
+    @students_with_reexams = @school.students.joins(:reexams).distinct
+    
+  end
+
+  def approve_reexam
+    @reexam = Reexam.find(params[:id])
+    @reexam.update(status: 'approved')
+    redirect_back fallback_location: root_path, notice: 'Reexam approved successfully.'
+  end
+  
+  
+  
+
+  def reject_reexam
+    @reexam = Reexam.find(params[:id])
+    @reexam.update(status: 'rejected')
+    redirect_back fallback_location: root_path, notice: 'Reexam rejected successfully.'
   end
 
   def create

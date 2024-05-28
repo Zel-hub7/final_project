@@ -51,10 +51,7 @@ class SchoolDashboardController < ApplicationController
     end
     redirect_to approved_students_path
   end
-
-
-  
-    
+   
     
   private
 

@@ -1,0 +1,11 @@
+<!-- app/views/students/reexam_form.html.erb -->
+<%= form_with model: @reexam, url: submit_reexam_path, local: true do |form| %>
+  <div class="field">
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit Reexam Request' %>
+  </div>
+<% end %>

@@ -8,6 +8,8 @@ class StudentsApplicationsController < ApplicationController
       @application = StudentsApplication.new
     end
   end
+
+  
   
   def create
     @application = current_user.build_students_application(application_params)

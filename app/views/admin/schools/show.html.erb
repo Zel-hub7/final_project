@@ -31,7 +31,6 @@
   <p>No students found with session started for this school.</p>
 <% end %>
 
-
 <h2>Students Ready for Exam</h2>
 <% @students_exam_ready = @students.select { |student| student.session == 'exam_ready' } %>
 <% if @students_exam_ready.any? %>
@@ -50,26 +49,28 @@
     </thead>
     <tbody>
       <% @students_exam_ready.each do |student| %>
-        <tr>
-          <td><%= student.FirstName %></td>
-          <td><%= student.LastName %></td>
-          <td><%= student.phone_number %></td>
-          <td><%= student.category %></td>
-          <td>
-            <%= form_with(model: [student, Test.new], url: admin_student_tests_path(student), local: true) do |form| %>
-              <%= form.number_field :theory_exam, placeholder: "Theory" %>
-          </td>
-          <td>
-              <%= form.number_field :practical_exam, placeholder: "Practical" %>
-          </td>
-          <td>
-              <%= form.select :status, options_for_select([['Passed', 'passed'], ['Failed', 'failed']]) %>
-          </td>
-          <td>
-              <%= form.submit "Add Score" %>
-            <% end %>
-          </td>
-        </tr>
+        <% unless student.tests.present? %> <!-- Check if the student has already taken the exam -->
+          <tr>
+            <td><%= student.FirstName %></td>
+            <td><%= student.LastName %></td>
+            <td><%= student.phone_number %></td>
+            <td><%= student.category %></td>
+            <td>
+              <%= form_with(model: [student, Test.new], url: admin_student_tests_path(student), local: true) do |form| %>
+                <%= form.number_field :theory_exam, placeholder: "Theory" %>
+            </td>
+            <td>
+                <%= form.number_field :practical_exam, placeholder: "Practical" %>
+            </td>
+            <td>
+                <%= form.select :status, options_for_select([['Passed', 'passed'], ['Failed', 'failed']]) %>
+            </td>
+            <td>
+                <%= form.submit "Add Score" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
@@ -77,4 +78,44 @@
   <p>No students ready for the exam found for this school.</p>
 <% end %>
 
+
+<!-- app/views/admin/schools/show.html.erb -->
+<h2>Students with Reexams</h2>
+<% if @students_with_reexams.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Reexam Full Name</th>
+        <th>Status</th>
+        <th>Actions</th> <!-- Add column for actions -->
+        <!-- Add more columns as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @students_with_reexams.each do |student| %>
+        <% student.reexams.each do |reexam| %>
+          <% if reexam.status == 'pending' %> <!-- Filter reexams with pending status -->
+            <tr>
+              <td><%= student.FirstName %> <%= student.LastName %></td>
+              <td><%= reexam.full_name %></td>
+              <td><%= reexam.status %></td>
+              <td> 
+                <%= button_to 'Approve', approve_reexam_admin_school_path(reexam), method: :patch, class: 'btn btn-primary' %>
+                <%= button_to 'Reject', reject_reexam_admin_school_path(reexam), method: :patch, class: 'btn btn-danger' %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No students found with reexams for this school.</p>
+<% end %>
+
+
+
 <%= link_to 'Back', admin_schools_path %>
+
+
