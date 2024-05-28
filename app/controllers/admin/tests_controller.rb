@@ -8,10 +8,15 @@ module Admin
         @student = Student.find(params[:student_id])
         @test = @student.tests.new(test_params)
   
-        if @test.save
-          redirect_to admin_school_path(@student.school), notice: 'Test score was successfully added.'
-        else
-          redirect_to admin_school_path(@student.school), alert: 'Failed to add test score.'
+        ActiveRecord::Base.transaction do
+          if @test.save
+            if @test.status == 'passed'
+              @student.update!(session: 'completed')
+            end
+            redirect_to admin_school_path(@student.school), notice: 'Test score was successfully added.'
+          else
+            redirect_to admin_school_path(@student.school), alert: 'Failed to add test score.'
+          end
         end
       end
   
@@ -22,7 +27,7 @@ module Admin
       end
   
       def test_params
-        params.require(:test).permit(:theory_exam, :practical_exam)
+        params.require(:test).permit(:theory_exam, :practical_exam, :status)
       end
     end
 end

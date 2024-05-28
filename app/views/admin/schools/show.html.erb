@@ -43,6 +43,7 @@
         <th>Category</th>
         <th>Theory Exam</th>
         <th>Practical Exam</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -59,6 +60,9 @@
           </td>
           <td>
               <%= form.number_field :practical_exam, placeholder: "Practical" %>
+          </td>
+          <td>
+              <%= form.select :status, options_for_select([['Passed', 'passed'], ['Failed', 'failed']]) %>
           </td>
           <td>
               <%= form.submit "Add Score" %>
