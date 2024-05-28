@@ -40,7 +40,7 @@ class Admin::SchoolsController < ApplicationController
   def list_students_with_session_started
     @students_with_session_started = Student.where(session: 'started')
   end
-  
+
   
   private
   
@@ -72,4 +72,5 @@ class Admin::SchoolsController < ApplicationController
     # Generate a random password for the new admin user
     SecureRandom.hex(8)
   end
+
 end

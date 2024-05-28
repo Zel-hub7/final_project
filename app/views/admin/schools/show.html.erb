@@ -31,4 +31,45 @@
   <p>No students found for this school.</p>
 <% end %>
 
+<h2>Students Ready for Exam</h2>
+<% @students_exam_ready = @students.select { |student| student.session == 'exam_ready' } %>
+<% if @students_exam_ready.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Category</th>
+        <th>Theory Exam</th>
+        <th>Practical Exam</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students_exam_ready.each do |student| %>
+        <tr>
+          <td><%= student.FirstName %></td>
+          <td><%= student.LastName %></td>
+          <td><%= student.phone_number %></td>
+          <td><%= student.category %></td>
+          <td>
+            <%= form_with(model: [student, Test.new], url: admin_student_tests_path(student), local: true) do |form| %>
+              <%= form.number_field :theory_exam, placeholder: "Theory" %>
+          </td>
+          <td>
+              <%= form.number_field :practical_exam, placeholder: "Practical" %>
+          </td>
+          <td>
+              <%= form.submit "Add Score" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No students ready for the exam found for this school.</p>
+<% end %>
+
 <%= link_to 'Back', admin_schools_path %>

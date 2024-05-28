@@ -27,13 +27,21 @@ Rails.application.routes.draw do
   end
 
 
-  namespace :admin do
-    resources :schools, only: [:new, :create, :index, :show] do
-      collection do
-        get 'list_students_with_session_started'
-      end
+# config/routes.rb
+# config/routes.rb
+namespace :admin do
+  resources :schools, only: [:new, :create, :index, :show] do
+    collection do
+      get 'list_students_with_session_started'
     end
   end
+
+  resources :students, only: [] do
+    resources :tests, only: [:create]
+  end
+end
+
+
   
   resources :admin, only: [:index] # Assuming AdminController has an index action
 end
