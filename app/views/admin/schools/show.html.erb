@@ -2,9 +2,9 @@
 
 <p><strong>Name:</strong> <%= @school.name %></p>
 <p><strong>Address:</strong> <%= @school.address %></p>
-
 <h2>Students</h2>
-<% if @students.any? %>
+<% @students_with_session_started = @students.select { |student| student.session == 'started' } %>
+<% if @students_with_session_started.any? %>
   <table>
     <thead>
       <tr>
@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @students.each do |student| %>
+      <% @students_with_session_started.each do |student| %>
         <tr>
           <td><%= student.FirstName %></td>
           <td><%= student.LastName %></td>
@@ -28,8 +28,9 @@
     </tbody>
   </table>
 <% else %>
-  <p>No students found for this school.</p>
+  <p>No students found with session started for this school.</p>
 <% end %>
+
 
 <h2>Students Ready for Exam</h2>
 <% @students_exam_ready = @students.select { |student| student.session == 'exam_ready' } %>
