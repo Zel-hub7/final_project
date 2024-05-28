@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  theory_exam: 1
+  practical_exam: 1
+
+two:
+  student: two
+  theory_exam: 1
+  practical_exam: 1
