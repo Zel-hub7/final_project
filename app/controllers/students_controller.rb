@@ -10,6 +10,27 @@ class StudentsController < ApplicationController
         redirect_to root_path, alert: "Student not found"
       end
     end
+
+    def profile
+      @student = Student.find_by(user_id: current_user.id)
+      unless @student
+        redirect_to root_path, alert: "Student not found"
+      end
+    end
+    
+    def edit
+      @student = Student.find(params[:id])
+    end
+
+    def update
+      @student = Student.find(params[:id])
+      if @student.update(student_params)
+        redirect_to profile_student_path(@student), notice: 'Profile updated successfully.'
+      else
+        render :edit
+      end
+    end
+
   
     def exam_status
       @student = Student.find_by(user_id: current_user.id)
@@ -48,6 +69,10 @@ class StudentsController < ApplicationController
   
     def reexam_params
       params.require(:reexam).permit(:full_name)
+    end
+
+    def student_params
+      params.require(:student).permit(:FirstName, :LastName, :phone_number, :category, :session, :school_id, :profile_picture)
     end
 end
   

@@ -41,4 +41,9 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+  def current_student
+    @current_student ||= Student.find_by(user_id: current_user.id)
+  end
+  helper_method :current_student
 end

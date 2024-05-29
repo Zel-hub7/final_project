@@ -1,0 +1,25 @@
+<!-- app/views/students/edit.html.erb -->
+<h1>Edit Student Profile</h1>
+
+<%= form_for @student do |f| %>
+  <div class="field">
+    <%= f.label :FirstName %>
+    <%= f.text_field :FirstName %>
+  </div>
+  <div class="field">
+    <%= f.label :LastName %>
+    <%= f.text_field :LastName %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile_picture %>
+    <%= f.file_field :profile_picture %>
+  </div>
+  <!-- Add more fields as needed -->
+
+  <%= f.submit "Update Profile" %>
+<% end %>

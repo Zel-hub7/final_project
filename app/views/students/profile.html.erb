@@ -1,0 +1,19 @@
+<!-- app/views/students/profile.html.erb -->
+<h1>Student Profile</h1>
+
+<% if @student %>
+  <%= image_tag @student.profile_picture if @student.profile_picture.attached? %>
+
+  <p>
+    <strong>First Name:</strong>
+    <%= @student.FirstName %>
+  </p>
+  <p>
+    <strong>Last Name:</strong>
+    <%= @student.LastName %>
+  </p>
+
+  <%= link_to "Edit Profile", edit_student_path(@student) %>
+<% else %>
+  <p>Student not found.</p>
+<% end %>

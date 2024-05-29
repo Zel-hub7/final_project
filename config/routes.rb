@@ -49,7 +49,11 @@ Rails.application.routes.draw do
   get 'students/reexam', to: 'students#reexam_form', as: 'reexam_form'
   post 'students/submit_reexam', to: 'students#submit_reexam', as: 'submit_reexam'
 
-  resources :students, only: [:show]
+  resources :students, only: [:show, :edit, :update] do
+    member do
+      get 'profile'
+    end
+  end
   
   resources :admin, only: [:index] # Assuming AdminController has an index action
 end

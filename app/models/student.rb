@@ -5,6 +5,7 @@ class Student < ApplicationRecord
     belongs_to :school
     has_many :tests, dependent: :destroy
     has_many :reexams, dependent: :destroy
+    has_one_attached :profile_picture
   
     # Validation to limit the number of reexams to three
     validate :validate_reexams_limit
