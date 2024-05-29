@@ -34,3 +34,13 @@ img.profile-picture.rounded-img {
     background-color: rgb(240, 240, 240);
 }
   
+.vertical-line {
+    border-left: 2px solid silver; /* Change 'silver' to 'white' if you prefer a white line */
+    height: 100%;
+}
+.profile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
