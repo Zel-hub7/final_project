@@ -1,0 +1,93 @@
+<section class="profile-section pp dashboards">
+  <div class="zola-sidebar">
+    <!-- Sidebar content -->
+    <a href="/school_dashboard">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+      </svg> Dashboard
+    </a>
+    <a href="http://127.0.0.1:3000/school_dashboard/all_enrollees">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="white" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+        <!-- SVG content -->
+      </svg> Enrollees List
+    </a>
+    <a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="green" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+      </svg> Apply For Renewal
+    </a>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger logouts", form_class: "d-inline" %>
+  </div>
+
+  <div class="container containerrr profile-page mt-5">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <% if @student.profile_picture.attached? %>
+          <%= image_tag @student.profile_picture, class: 'profile-picture img-fluid rounded-circle mb-3 shadow-sm' %>
+        <% else %>
+          <%= image_tag 'default.jpg', class: 'profile-picture img-fluid rounded-circle mb-3 shadow-sm' %>
+        <% end %>
+        <div class = "profile-list">
+        <a href="<%= edit_student_path(@student) %>" class="btn btn-primary mt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" margin="5" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+          </svg> Edit Profile
+        </a>
+
+        <a href="/students/session_status" class="btn btn-success check-session-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="white" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg> Check Session Status
+        </a>
+
+        <a href="/students/session_status" class="btn btn-secondary check-session-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color = "white" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+                <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+            </svg> Check Exam Status
+        </a>
+
+        
+        </div>
+
+
+
+      </div>
+      
+      <div class="col-md-1 d-flex justify-content-center">
+        <div class="vertical-line"></div>
+      </div>
+      
+      <div class="col-md-7">
+        <h1 class="display-4 mb-4"><%= @student.FirstName.titleize %> <%= @student.LastName.titleize %></h1>
+        <p class="lead">Welcome to the student profile page.</p>
+        <div class="mb-3">
+          <strong>Bio: </strong>
+          <%= @student.bio %>
+        </div>
+        <div class="mb-3">
+          <strong>Phone Number: </strong>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" color="green" margin="6" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+          </svg>
+          <%= @student.phone_number %>
+        </div>
+        <div class="mb-3">
+          <strong>Email Address: </strong>
+          <%= @student.user.email %>
+        </div>
+        <div class="mb-3">
+          <strong>Category: </strong>
+          <%= @student.category %>
+        </div>
+        <div class="mb-3">
+          <strong>Address: </strong>
+          <%= @student.address %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

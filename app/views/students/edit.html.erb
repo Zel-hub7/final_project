@@ -1,0 +1,76 @@
+<section class="dashboards bg-dark text-white p-4 siu">
+  <div class="row">
+    <div class="col-md-3 zola-sidebar bg-secondary p-3 rounded">
+      <% if @student.profile_picture.attached? %>
+        <%= image_tag @student.profile_picture, class: 'profile-picture edit-img img-fluid rounded-circle mb-3 shadow-sm' %>
+      <% else %>
+        <%= image_tag 'default.jpg', class: 'profile-picture edit-img img-fluid rounded-circle mb-3 shadow-sm' %>
+      <% end %>
+
+      <nav class="nav flex-column">
+        <a href="#" class="nav-link text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+          </svg>
+          Profile
+        </a>
+        <a href="#" class="nav-link text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/>
+            <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/>
+          </svg>
+          Dashboard
+        </a>
+        <a href="#" class="nav-link text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+          </svg>
+          Apply For Renewal
+        </a>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger mt-3", form_class: "d-inline" %>
+      </nav>
+    </div>
+
+    <div class="col-md-9">
+      <div class="card bg-dark border-secondary text-white">
+        <div class="card-header bg-secondary">
+          <h3 class="card-title">Edit Profile</h3>
+        </div>
+      <div class="card-body">
+        <%= form_for @student do |f| %>
+          <div class="form-group">
+            <%= f.label :FirstName, class: 'form-label' %>
+            <%= f.text_field :FirstName, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :LastName, class: 'form-label' %>
+            <%= f.text_field :LastName, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone_number, class: 'form-label' %>
+            <%= f.text_field :phone_number, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, class: 'form-label' %>
+            <%= f.text_field :address, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bio, class: 'form-label' %>
+            <%= f.text_area :bio, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :profile_picture, class: 'form-label' %>
+            <%= f.file_field :profile_picture, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <!-- Add more fields as needed -->
+          <div class="form-group">
+            <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
