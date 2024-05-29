@@ -4,7 +4,7 @@
       <% if @student.profile_picture.attached? %>
         <%= image_tag @student.profile_picture, class: 'profile-picture edit-img img-fluid rounded-circle mb-3 shadow-sm' %>
       <% else %>
-        <%= image_tag 'default_profile.png', class: 'profile-picture edit-img img-fluid rounded-circle mb-3 shadow-sm' %>
+        <%= image_tag 'default.jpg', class: 'profile-picture edit-img img-fluid rounded-circle mb-3 shadow-sm' %>
       <% end %>
 
       <nav class="nav flex-column">
@@ -37,30 +37,39 @@
         <div class="card-header bg-secondary">
           <h3 class="card-title">Edit Profile</h3>
         </div>
-        <div class="card-body">
-          <%= form_for @student do |f| %>
-            <div class="form-group">
-              <%= f.label :FirstName, class: 'form-label' %>
-              <%= f.text_field :FirstName, class: 'form-control bg-dark text-white border-secondary' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :LastName, class: 'form-label' %>
-              <%= f.text_field :LastName, class: 'form-control bg-dark text-white border-secondary' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :phone_number, class: 'form-label' %>
-              <%= f.text_field :phone_number, class: 'form-control bg-dark text-white border-secondary' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :profile_picture, class: 'form-label' %>
-              <%= f.file_field :profile_picture, class: 'form-control bg-dark text-white border-secondary' %>
-            </div>
-            <!-- Add more fields as needed -->
-            <div class="form-group">
-              <%= f.submit "Update Profile", class: 'btn btn-primary' %>
-            </div>
-          <% end %>
-        </div>
+      <div class="card-body">
+        <%= form_for @student do |f| %>
+          <div class="form-group">
+            <%= f.label :FirstName, class: 'form-label' %>
+            <%= f.text_field :FirstName, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :LastName, class: 'form-label' %>
+            <%= f.text_field :LastName, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone_number, class: 'form-label' %>
+            <%= f.text_field :phone_number, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, class: 'form-label' %>
+            <%= f.text_field :address, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bio, class: 'form-label' %>
+            <%= f.text_area :bio, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :profile_picture, class: 'form-label' %>
+            <%= f.file_field :profile_picture, class: 'form-control bg-dark text-white border-secondary' %>
+          </div>
+          <!-- Add more fields as needed -->
+          <div class="form-group">
+            <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+
       </div>
     </div>
   </div>
