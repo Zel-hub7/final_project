@@ -6,14 +6,91 @@
   <title>Application Details</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* CSS for hiding/showing the image */
+    .hidden {
+      display: none;
+    }
+
+    body {
+      background-color: #f8f9fa; /* A bit darker background */
+    }
+
+    .container {
+      background-color: #ffffff; /* White container */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow */
+      padding: 30px; /* Add some padding */
+      margin-top: 50px; /* Add some space from the top */
+    }
+
+    h1 {
+      color: #007bff; /* Blue header text */
+    }
+
+    .details {
+      margin-bottom: 15px; /* Add some space between details */
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h1>Application Details</h1>
-    <div>
-      <strong>Status:</strong> <%= @application.status %>
+  <div class="container">
+    <h1 class="text-center">Application Details</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="details">
+          <strong>Status:</strong> <%= @application.status %>
+        </div>
+        <div class="details">
+          <strong>First Name:</strong> <%= @application.FirstName %>
+        </div>
+        <div class="details">
+          <strong>Last Name:</strong> <%= @application.LastName %>
+        </div>
+        <div class="details">
+          <strong>Phone Number:</strong> <%= @application.phone_number %>
+        </div>
+        <div class="details">
+          <strong>City:</strong> <%= @application.city %>
+        </div>
+        <div class="details">
+          <strong>Birthday:</strong> <%= @application.birthday %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="details">
+          <strong>Middle Name:</strong> <%= @application.middle_name %>
+        </div>
+        <div class="details">
+          <strong>Address:</strong> <%= @application.address %>
+        </div>
+        <div class="details">
+          <strong>Gender:</strong> <%= @application.gender %>
+        </div>
+        <div class="details">
+          <strong>Category:</strong> <%= @application.category %>
+        </div>
+        <div class="details">
+          <strong>School:</strong> <%= @application.school.name %>
+        </div>
+        <!-- Add image display logic -->
+        <div class="details">
+          <strong>Image:</strong> 
+          <!-- Image link that shows the image when clicked -->
+          <a href="#" onclick="toggleImage()">Show Image</a>
+          <!-- Actual image, initially hidden -->
+          <img src="<%= @application.image %>" id="applicationImage" class="hidden img-fluid rounded mt-2" alt="Application Image">
+        </div>
+      </div>
     </div>
-    <!-- Add other details as needed -->
   </div>
+
+  <!-- JavaScript to toggle image visibility -->
+  <script>
+    function toggleImage() {
+      var img = document.getElementById("applicationImage");
+      img.classList.toggle("hidden");
+    }
+  </script>
 </body>
 </html>
