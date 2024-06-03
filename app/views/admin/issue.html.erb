@@ -11,12 +11,12 @@
         <th>Category</th>
         <th>School</th>
         <th>Session</th>
-        <th>Action</th> <!-- Add Action column header -->
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <% @students.each do |student| %>
-        <% if student.session == 'completed' %> <!-- Filter students with completed session -->
+        <% if student.session == 'completed' %> 
           <tr>
             <td><%= student.FirstName %></td>
             <td><%= student.LastName %></td>

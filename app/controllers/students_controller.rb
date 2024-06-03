@@ -64,6 +64,17 @@ class StudentsController < ApplicationController
         redirect_to root_path, alert: "Student not found"
       end
     end
+
+    # The status of my License
+
+    def license_status
+      @student = Student.find_by(user_id: current_user.id)
+      if @student
+        @license = License.find_by(student_id: @student.id)
+      else
+        redirect_to root_path, alert: "Student not found"
+      end
+    end
   
     private
   

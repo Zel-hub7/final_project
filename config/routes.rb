@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'students/exam_status', to: 'students#exam_status', as: 'student_exam_status'
   get 'school_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_students'
   post 'school_dashboard/mark', to: 'school_dashboard#mark', as: 'mark_students'
+  get 'students/license_status', to: 'students#license_status', as: 'license_status'
 
   resources :school_dashboard do
     collection do
