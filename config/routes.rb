@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'application_status', to: 'home#application_status'
   get 'students/session_status', to: 'students#session_status', as: 'student_session_status'
-
+  post 'admin/issue', to: 'admin#issue', as: 'admin_issue'
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
   get 'students/exam_status', to: 'students#exam_status', as: 'student_exam_status'
   get 'school_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_students'

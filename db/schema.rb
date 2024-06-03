@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_31_105358) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_03_194401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_31_105358) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "licenses", force: :cascade do |t|
+    t.string "license_number"
+    t.date "expiration_date"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_licenses_on_student_id"
   end
 
   create_table "reexams", force: :cascade do |t|
@@ -147,6 +156,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_31_105358) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "licenses", "students"
   add_foreign_key "reexams", "students"
   add_foreign_key "renewal_applications", "students"
   add_foreign_key "school_admins", "schools"

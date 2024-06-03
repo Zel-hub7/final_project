@@ -1,3 +1,4 @@
+<!-- View (ERB) -->
 <h1 class="text-center my-4">Students List</h1>
 
 <div class="table-responsive">
@@ -10,20 +11,27 @@
         <th>Category</th>
         <th>School</th>
         <th>Session</th>
-
+        <th>Action</th> <!-- Add Action column header -->
       </tr>
     </thead>
     <tbody>
-      <% Student.completed_session.each do |student| %>
-        <tr>
-          <td><%= student.FirstName %></td>
-          <td><%= student.LastName %></td>
-          <td><%= student.phone_number %></td>
-          <td><%= student.category %></td>
-          <td><%= student.school.name %></td>
-          <td><%= student.session %></td>
-
-        </tr>
+      <% @students.each do |student| %>
+        <% if student.session == 'completed' %> <!-- Filter students with completed session -->
+          <tr>
+            <td><%= student.FirstName %></td>
+            <td><%= student.LastName %></td>
+            <td><%= student.phone_number %></td>
+            <td><%= student.category %></td>
+            <td><%= student.school.name %></td>
+            <td><%= student.session %></td>
+            <td>
+              <%= form_tag admin_issue_path, method: :post do %>
+                <%= hidden_field_tag :student_id, student.id %>
+                <%= submit_tag "Issue", class: "btn btn-primary" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
