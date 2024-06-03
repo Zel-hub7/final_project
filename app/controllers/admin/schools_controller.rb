@@ -59,6 +59,7 @@ class Admin::SchoolsController < ApplicationController
     @students_with_session_started = Student.where(session: 'started')
   end
 
+
   private
 
   def authorize_admin

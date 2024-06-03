@@ -9,6 +9,8 @@ class Student < ApplicationRecord
   
     # Validation to limit the number of reexams to three
     validate :validate_reexams_limit
+    scope :completed_session, -> { where(session: 'completed') }
+    
   
     def failed_exam?
       tests.any? { |test| test.status == 'failed' }

@@ -1,0 +1,30 @@
+<h1 class="text-center my-4">Students List</h1>
+
+<div class="table-responsive">
+  <table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Category</th>
+        <th>School</th>
+        <th>Session</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% Student.completed_session.each do |student| %>
+        <tr>
+          <td><%= student.FirstName %></td>
+          <td><%= student.LastName %></td>
+          <td><%= student.phone_number %></td>
+          <td><%= student.category %></td>
+          <td><%= student.school.name %></td>
+          <td><%= student.session %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

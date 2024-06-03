@@ -5,6 +5,10 @@ class AdminController < ApplicationController
     def index
       # Your existing code for the index action
     end
+
+    def issue
+      @students = Student.all
+    end
   
     private
   

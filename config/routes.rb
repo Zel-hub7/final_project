@@ -55,5 +55,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :admin, only: [:index] # Assuming AdminController has an index action
+  resources :admin, only: [:index] do
+    collection do
+      get :issue
+    end
+  end
 end
