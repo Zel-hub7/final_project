@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_03_194401) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_14_083148) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_194401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_renewal_applications_on_student_id"
+  end
+
+  create_table "renewal_requests", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.index ["student_id"], name: "index_renewal_requests_on_student_id"
   end
 
   create_table "school_admins", force: :cascade do |t|
@@ -159,6 +168,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_194401) do
   add_foreign_key "licenses", "students"
   add_foreign_key "reexams", "students"
   add_foreign_key "renewal_applications", "students"
+  add_foreign_key "renewal_requests", "students"
   add_foreign_key "school_admins", "schools"
   add_foreign_key "school_admins", "users"
   add_foreign_key "students", "schools"

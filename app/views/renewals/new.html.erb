@@ -1,0 +1,12 @@
+<h1>Request for Renewal</h1>
+
+<%= form_with(model: @renewal_request, url: renewals_path) do |form| %>
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_area :reason %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Renewal Request" %>
+  </div>
+<% end %>

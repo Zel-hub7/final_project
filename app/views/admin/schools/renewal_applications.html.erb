@@ -1,0 +1,23 @@
+<!-- app/views/admin/schools/renewal_applications.html.erb -->
+<h1 class="mb-4">All Renewal Applications</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Student Name</th>
+        <th scope="col">School</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @renewal_applications.each do |renewal_request| %>
+        <tr>
+          <td><%= renewal_request.student.FirstName %></td>
+          <td><%= renewal_request.student.school.name %></td>
+          <td><%= renewal_request.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

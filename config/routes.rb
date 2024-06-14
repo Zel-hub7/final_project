@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'renewals/new'
+  get 'renewals/create'
   get 'reexams/new'
 
   devise_for :users
@@ -13,7 +15,9 @@ Rails.application.routes.draw do
   post 'admin/issue', to: 'admin#issue', as: 'admin_issue'
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
   get 'students/exam_status', to: 'students#exam_status', as: 'student_exam_status'
-  get 'school_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_students'
+  get 'school_dashboard/approve  authenticated :user do
+    root to: "home#students", as: :authenticated_root
+  endd', to: 'school_dashboard#approved', as: 'approved_students'
   post 'school_dashboard/mark', to: 'school_dashboard#mark', as: 'mark_students'
   get 'students/license_status', to: 'students#license_status', as: 'license_status'
 
@@ -36,6 +40,7 @@ Rails.application.routes.draw do
       member do
         patch 'approve_reexam'
         patch 'reject_reexam'
+      
       end
       collection do
         get 'list_students_with_session_started'
@@ -46,7 +51,7 @@ Rails.application.routes.draw do
       resources :tests, only: [:create]
     end
   end
-
+  get 'admin/renewal_applications', to: 'admin/schools#renewal_applications'
   get 'students/reexam', to: 'students#reexam_form', as: 'reexam_form'
   post 'students/submit_reexam', to: 'students#submit_reexam', as: 'submit_reexam'
 
@@ -61,4 +66,6 @@ Rails.application.routes.draw do
       get :issue
     end
   end
+
+  resources :renewals, only: [:new, :create]
 end

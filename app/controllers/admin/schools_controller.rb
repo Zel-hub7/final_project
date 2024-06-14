@@ -59,6 +59,30 @@ class Admin::SchoolsController < ApplicationController
     @students_with_session_started = Student.where(session: 'started')
   end
 
+  def renewal_applications
+    @renewal_applications = RenewalRequest.includes(:student)
+  end
+
+  def approve_renewal
+    @renewal_request = RenewalRequest.find(params[:id])
+    if @renewal_request.update(status: 'approved')
+      flash[:notice] = 'Renewal request approved successfully.'
+    else
+      flash[:alert] = 'Failed to approve renewal request.'
+    end
+    redirect_to admin_renewal_applications_path
+  end
+
+  def reject_renewal
+    @renewal_request = RenewalRequest.find(params[:id])
+    if @renewal_request.update(status: 'rejected')
+      flash[:notice] = 'Renewal request rejected successfully.'
+    else
+      flash[:alert] = 'Failed to reject renewal request.'
+    end
+    redirect_to admin_renewal_applications_path
+  end
+
 
   private
 
