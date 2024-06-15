@@ -49,7 +49,7 @@ class SchoolDashboardController < ApplicationController
     else
       flash[:alert] = "No students selected."
     end
-    redirect_to approved_students_path
+    redirect_to school_dashboard_index_path
   end
    
     

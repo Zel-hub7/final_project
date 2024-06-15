@@ -133,46 +133,50 @@
 
 
   <%# Everything below this is for applicants which havent been enrolled as students %>
-  <div class="zola-sidebar">
-    <a href="http://127.0.0.1:3000/students_applications/new">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
-      </svg> Apply For Enrollment
-    </a>
-    <a href="/application_status">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="green" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-      </svg> Status
-    </a>
-    <a href="#">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="green" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
-        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
-      </svg> Apply For Renewal
-    </a>
-    <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger logouts", form_class: "d-inline" %>
-  </div>
+ 
 
   <!-- Page content -->
-  <div class="zola-content">
-    <nav class="nav-bar dash-nav" style="background-color: #e6e6e6;">
-      <div>
-        <h6>.</h6>
-      </div>
-      <div class="nav-links">
-        <a>
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="black" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-          </svg>
-        </a>
-      </div>
-    </nav>
+  <section class = "sect5">
+  <nav class="nav-bar"> 
+    <div>
+      <h2>.</h2>
+    </div>
+    <div class="nav-links">
+      <%= link_to 'Sign in', new_user_session_path, class: "btn btn-secondary" %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+  </nav>
+  <nav class="nav-bar2">
+    <div>
+     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Emblem_of_Ethiopia.svg/1200px-Emblem_of_Ethiopia.svg.png" alt="Federal Logo" 
+          style="width: 70px; height: auto; border-radius: 50%; border: 1px solid #000; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" />
 
-    <h2>Main Content Area</h2>
-    <p>This is the main content area. It will adjust based on the sidebar width.</p>
-  </div>
+    </div>
+    <div class="nav-links2">
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger logouts", form_class: "d-inline" %>
+      
+    </div>
+  </nav>
+
+  <section class="main-section">
+    <div class="Sub-Section">
+      <h1 class="tag">DRIVING LICENSE REGISTRATION MANAGEMENT SYSTEM</h1>
+      <%= link_to 'Enroll Now', new_students_application_path, class: "enroll btn-success" %>
+
+    </div>  
+  
+  </section>
+
+  <footer class = "footer">
+    <p>Copyright &copy; 2024 All rights reserved</p>
+    <p>Developed by TZ Tech Solutions</p>
+  </footer>
+
+
+</section>
+  
+
+  
 <% end %>
 
 <!-- jQuery and Bootstrap Bundle (includes Popper) -->

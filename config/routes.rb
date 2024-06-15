@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post 'admin/issue', to: 'admin#issue', as: 'admin_issue'
   get 'school_dashboard/pending', to: 'school_dashboard#pending', as: 'pending'
   get 'students/exam_status', to: 'students#exam_status', as: 'student_exam_status'
+  get 'school_dashboard/approved', to: 'school_dashboard#approved'
   get 'school_dashboard/approve  authenticated :user do
     root to: "home#students", as: :authenticated_root
   endd', to: 'school_dashboard#approved', as: 'approved_students'
@@ -54,6 +55,7 @@ Rails.application.routes.draw do
   get 'admin/renewal_applications', to: 'admin/schools#renewal_applications'
   get 'students/reexam', to: 'students#reexam_form', as: 'reexam_form'
   post 'students/submit_reexam', to: 'students#submit_reexam', as: 'submit_reexam'
+  get 'schools_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_enrolles'
 
   resources :students, only: [:show, :edit, :update] do
     member do

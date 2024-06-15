@@ -125,3 +125,12 @@
 .footer p {
     margin: 1%
 }
+.content-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.sect5 {
+    width: 100%;
+}
