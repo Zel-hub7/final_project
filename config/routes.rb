@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     root to: "home#students", as: :authenticated_root
   end
 
+
+
   root to: "home#index"
   get 'application_status', to: 'home#application_status'
   get 'students/session_status', to: 'students#session_status', as: 'student_session_status'
@@ -70,4 +72,5 @@ Rails.application.routes.draw do
   end
 
   resources :renewals, only: [:new, :create]
+  
 end
