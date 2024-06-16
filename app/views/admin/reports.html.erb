@@ -1,0 +1,132 @@
+<!-- app/views/admin/reports.html.erb -->
+<h1 class="my-4">Admin Reports</h1>
+
+<div class="container">
+
+  <h2 class="mt-5">Summary</h2>
+  <ul class="list-group mb-5">
+    <li class="list-group-item">Total Students: <%= @total_students %></li>
+    <li class="list-group-item">Total Licenses Issued: <%= @total_licenses %></li>
+    <li class="list-group-item">Total Schools: <%= @total_schools %></li>
+  </ul>
+
+  <h2 class="mt-5">Students per School</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>School Name</th>
+        <th>Number of Students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students_per_school.each do |school| %>
+        <tr>
+          <td><%= school.name %></td>
+          <td><%= school.student_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Students by Category</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Category</th>
+        <th>Number of Students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students_by_category.each do |category, count| %>
+        <tr>
+          <td><%= category %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Licenses Expiring Soon</h2>
+  <p>Number of licenses expiring within the next month: <%= @licenses_expiring_soon %></p>
+
+  <h2 class="mt-5">Average Test Scores</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>School Name</th>
+        <th>Theory Exam</th>
+        <th>Practical Exam</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @average_test_scores.each do |student| %>
+        <tr>
+          <td><%= student[:id] %></td>
+          <td><%= "#{student[:FirstName]} #{student[:LastName]}" %></td>
+          <td><%= student[:school_name] %></td>
+          <td><%= student[:avg_theory_exam] %></td>
+          <td><%= student[:avg_practical_exam] %></td>
+          <td><%= student[:last_test_status] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Test Pass/Fail Rates</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Status</th>
+        <th>Number of Tests</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @test_pass_fail_rates.each do |status, count| %>
+        <tr>
+          <td><%= status %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Reexamination Requests</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Status</th>
+        <th>Number of Requests</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reexam_requests.each do |status, count| %>
+        <tr>
+          <td><%= status %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Student Applications Status</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Status</th>
+        <th>Number of Applications</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @student_applications_status.each do |status, count| %>
+        <tr>
+          <td><%= status %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

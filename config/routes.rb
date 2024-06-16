@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   resources :admin, only: [:index] do
     collection do
       get :issue
+      get 'reports', to: 'admin#reports'
     end
   end
 
