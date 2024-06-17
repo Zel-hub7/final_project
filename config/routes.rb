@@ -57,7 +57,8 @@ Rails.application.routes.draw do
   get 'admin/renewal_applications', to: 'admin/schools#renewal_applications'
   get 'students/reexam', to: 'students#reexam_form', as: 'reexam_form'
   post 'students/submit_reexam', to: 'students#submit_reexam', as: 'submit_reexam'
-  get 'schools_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_enrolles'
+  get 'schools_dashboard/approved', to: 'school_dashboard#approved', as: 'approved_enrolles' 
+  
 
   resources :students, only: [:show, :edit, :update] do
     member do
@@ -73,5 +74,5 @@ Rails.application.routes.draw do
   end
 
   resources :renewals, only: [:new, :create]
-  
+
 end
