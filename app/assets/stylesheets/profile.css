@@ -44,3 +44,11 @@ img.profile-picture.rounded-img {
     gap: 15px;
 
 }
+.geta {
+    display: flex;
+    gap: 15px;
+
+}
+.geta img {
+    margin-top: 7px;
+}
