@@ -1,15 +1,74 @@
-<%= form_for @application, url: { action: "update" }, method: :patch do |f| %>
-  <%# Your form fields go here, for example: %>
-  <%= f.label :FirstName %>
-  <%= f.text_field :FirstName %>
+<%= form_for @application, url: { action: "update" }, method: :patch do |form| %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :FirstName %>
+        <%= form.text_field :FirstName, class: 'form-control', autofocus: true %>
+      </div>
+    </div>
 
-  <%= f.label :LastName %>
-  <%= f.text_field :LastName %>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :LastName %>
+        <%= form.text_field :LastName, class: 'form-control' %>
+      </div>
+    </div>
 
-  <%= f.label :phone_number %>
-  <%= f.text_field :phone_number %>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :middle_name %>
+        <%= form.text_field :middle_name, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
 
-  <%# Add other fields as needed %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :phone_number %>
+        <%= form.text_field :phone_number, class: 'form-control' %>
+      </div>
+    </div>
 
-  <%= f.submit "Update Application" %>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.select :gender, ['Male', 'Female'], { prompt: "Select Gender" }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, ['Motorcycle', 'Automobile', 'Taxi T-1', 'Taxi T-2', "Public P-1", "Public p-2", "Truck D1", "Truck D2", "Truck D3", "Tanker F1", "Tanker F2"], { prompt: "Select Category" }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :school_id, "Choose School" %>
+    <%= form.collection_select :school_id, School.all, :id, :name, { prompt: "Select School" }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :Medical_Paper %>
+    <%= form.file_field :Medical_Paper, class: 'form-control' %>
+  </div>
+
+  <%= form.submit "Update Application", class: 'btn btn-primary' %>
 <% end %>
