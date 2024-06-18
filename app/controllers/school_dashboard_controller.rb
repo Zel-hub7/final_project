@@ -54,6 +54,15 @@ class SchoolDashboardController < ApplicationController
     end
     redirect_to school_dashboard_index_path
   end
+  
+
+  def test_scores
+    @school_name = current_user.school_admins.first.school.name
+    @students = Student.where(school_id: current_user.school_admins.first.school_id).includes(:tests)
+  end
+  
+  
+
 
 
    
