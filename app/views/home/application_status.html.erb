@@ -1,9 +1,15 @@
-<h1>Application Status</h1>
-<% if @application_status.present? %>
-  <p>Your application status: <%= @application_status %></p>
-  <% if @application_status == 'rejected' %>
-    <%= link_to 'Reapply', edit_students_application_path(current_user.students_application), class: "btn btn-warning" %>
-  <% end %>
-<% else %>
-  <p>No application submitted yet.</p>
-<% end %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 mb-4">Application Status</h1>
+            <% if @application_status.present? %>
+                <p class="lead">Your application status: <strong><%= @application_status %></strong></p>
+                <% if @application_status == 'rejected' %>
+                    <%= link_to 'Reapply', edit_students_application_path(current_user.students_application), class: "btn btn-warning btn-lg mt-3" %>
+                <% end %>
+            <% else %>
+                <p class="lead">No application submitted yet.</p>
+            <% end %>
+        </div>
+    </div>
+</div>
